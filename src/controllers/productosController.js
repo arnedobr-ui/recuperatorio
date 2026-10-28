@@ -46,7 +46,8 @@ const deleteProducto = async (req, res) => {
     const { id } = req.params
 
     console.log("asdas");
-    const { error } = supabase.from('productos').delete().eq('id', id)
+
+    const { data, error } = await supabase.from('productos').delete().eq('id', id)
 
     if (error) return res.status(500).json({ error: error.message })
 
